@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5">
+<title>Happy Birthday Kitt 💖 | Best Friend Forever ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600;1,700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0F1A;
+    --bg-surface: #10192A;
+    --bg-card: rgba(22, 35, 56, 0.78);
+    --ink: #F8FAFC;
+    --ink-secondary: #CBD5E1;
+    --muted: #8E9EB5;
+    --gold: #FCD34D;
+    --rose: #FB7185;
+    --rose-glow: #E11D48;
+    --ice: #38BDF8;
+    --border-glass: rgba(255, 255, 255, 0.12);
+    --border-gold: rgba(252, 211, 77, 0.35);
+  }
+
+  * { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Ambient glowing backdrop */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 15%, rgba(56, 189, 248, 0.14) 0%, transparent 45%),
+      radial-gradient(circle at 80% 25%, rgba(251, 113, 133, 0.16) 0%, transparent 50%),
+      radial-gradient(circle at 50% 85%, rgba(252, 211, 77, 0.12) 0%, transparent 55%),
+      var(--bg);
+    z-index: -2;
+    pointer-events: none;
+  }
+
+  /* Starfield Background */
+  #starfield {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Screens Management */
+  .screen {
+    min-height: 100vh;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(30px, 6vh, 50px) 18px clamp(40px, 8vh, 60px);
+    position: relative;
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .screen.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Audio Bar & Float Controls */
+  .floating-controls {
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top, 16px));
+    right: 16px;
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+  }
+
+  .control-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border-glass);
+    background: rgba(16, 25, 42, 0.85);
+    backdrop-filter: blur(14px);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease;
+  }
+
+  .control-btn:active {
+    transform: scale(0.92);
+  }
+
+  .control-btn.playing {
+    animation: pulseGlow 1.8s infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(252, 211, 77, 0.4); }
+    50% { box-shadow: 0 0 16px 4px rgba(252, 211, 77, 0.7); }
+  }
+
+  /* Badges & Kickers */
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    background: rgba(252, 211, 77, 0.12);
+    border: 1px solid rgba(252, 211, 77, 0.3);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(8px);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #FFF 0%, var(--gold) 40%, var(--rose) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .title-hero {
+    font-size: clamp(2rem, 7vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.18;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    max-width: 440px;
+    font-size: clamp(0.92rem, 3.6vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    margin: 0 auto 28px;
+    padding: 0 8px;
+  }
+
+  /* Buttons */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.96rem;
+    padding: 14px 30px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--gold) 0%, #F59E0B 50%, var(--rose) 100%);
+    color: #0A0F1A;
+    box-shadow: 0 10px 24px -5px rgba(245, 158, 11, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    user-select: none;
+  }
+
+  .btn:active {
+    transform: scale(0.96);
+  }
+
+  .btn.ghost {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--ink);
+    border: 1px solid var(--border-glass);
+    box-shadow: none;
+    backdrop-filter: blur(8px);
+  }
+
+  .btn.ghost:active {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .btn.small {
+    padding: 10px 20px;
+    font-size: 0.86rem;
+  }
+
+  /* Penguin Character */
+  .penguin-wrap {
+    position: relative;
+    width: 130px;
+    height: 155px;
+    margin: 5px auto 22px;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.45));
+  }
+
+  .penguin {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .party-hat {
+    position: absolute;
+    top: -12px;
+    left: 52px;
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 32px solid var(--rose);
+    transform: rotate(14deg);
+    z-index: 10;
+  }
+
+  .party-hat::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    width: 14px;
+    height: 14px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold);
+  }
+
+  .party-hat::after {
+    content: '';
+    position: absolute;
+    bottom: -32px;
+    left: -14px;
+    width: 28px;
+    height: 5px;
+    background: var(--ice);
+    border-radius: 4px;
+  }
+
+  .penguin .body {
+    position: absolute;
+    left: 16px; top: 20px;
+    width: 98px; height: 120px;
+    background: linear-gradient(180deg, #243447 0%, #15202B 100%);
+    border-radius: 50% 50% 46% 46% / 55% 55% 45% 45%;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .penguin .belly {
+    position: absolute;
+    left: 33px; top: 50px;
+    width: 64px; height: 82px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 100%);
+    border-radius: 50% 50% 46% 46% / 55% 55% 45% 45%;
+  }
+
+  .penguin .wing {
+    position: absolute;
+    top: 56px; width: 26px; height: 56px;
+    background: #1E2C3D;
+    border-radius: 40% 60% 60% 40%;
+  }
+  .penguin .wing.left { left: 6px; transform: rotate(-20deg); }
+  .penguin .wing.right { right: 6px; transform: rotate(20deg) scaleX(-1); }
+
+  .penguin .eye {
+    position: absolute; top: 35px;
+    width: 9px; height: 12px;
+    background: #0F172A;
+    border-radius: 50%;
+    animation: blink 4s infinite;
+  }
+  .penguin .eye::after {
+    content: '';
+    position: absolute;
+    top: 2px; right: 2px;
+    width: 3px; height: 3px;
+    background: #FFF;
+    border-radius: 50%;
+  }
+  .penguin .eye.l { left: 44px; }
+  .penguin .eye.r { right: 44px; }
+
+  @keyframes blink {
+    0%, 94%, 100% { transform: scaleY(1); }
+    96% { transform: scaleY(0.1); }
+  }
+
+  .penguin .beak {
+    position: absolute; top: 45px; left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 12px solid var(--gold);
+    border-radius: 2px;
+  }
+
+  .penguin .cheek {
+    position: absolute; top: 45px;
+    width: 11px; height: 6px;
+    background: rgba(251, 113, 133, 0.6);
+    border-radius: 50%;
+  }
+  .penguin .cheek.l { left: 32px; }
+  .penguin .cheek.r { right: 32px; }
+
+  .penguin .feet {
+    position: absolute; bottom: 6px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 14px;
+  }
+  .penguin .feet span {
+    width: 22px; height: 9px;
+    background: var(--gold);
+    border-radius: 0 0 10px 10px;
+  }
+
+  .bounce { animation: penguinBob 2.4s ease-in-out infinite; }
+  @keyframes penguinBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Crying Penguin */
+  .penguin.sad .tear {
+    position: absolute; top: 45px;
+    width: 5px; height: 12px;
+    background: #60A5FA;
+    border-radius: 50%;
+    animation: tearDrip 1.2s ease-in infinite;
+  }
+  .penguin.sad .tear.l { left: 41px; }
+  .penguin.sad .tear.r { right: 41px; }
+
+  @keyframes tearDrip {
+    0% { opacity: 0; transform: translateY(0); }
+    30% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(20px); }
+  }
+
+  /* Screen 2: Choices */
+  .penguin-choices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 440px;
+    margin: 14px auto 20px;
+  }
+
+  .choice-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 18px;
+    padding: 16px 10px;
+    cursor: pointer;
+    backdrop-filter: blur(14px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease;
+  }
+
+  .choice-card:active {
+    transform: scale(0.95);
+    border-color: var(--gold);
+  }
+
+  .choice-card .penguin-mini {
+    transform: scale(0.6);
+    margin: -25px 0 -15px;
+  }
+
+  .choice-tag {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-top: 6px;
+  }
+
+  .choice-sub {
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* Reveal Modals */
+  .card-modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 28px 20px;
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  .polaroid-frame {
+    background: #FFFFFF;
+    padding: 10px 10px 22px;
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    margin: 16px auto 20px;
+    max-width: 250px;
+    transform: rotate(-1.5deg);
+  }
+
+  .polaroid-frame img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+  }
+
+  .polaroid-caption {
+    font-family: 'Caveat', cursive;
+    color: #1E293B;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .mini-collage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-width: 320px;
+    margin: 14px auto 18px;
+  }
+
+  .mini-collage-item {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .mini-collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ========================================================
+     SCREEN FINALE: Full Interactive Birthday Celebration Hub
+     ======================================================== */
+  #screen-finale {
+    display: none;
+    text-align: left;
+    padding: 16px 0 60px;
+  }
+
+  #screen-finale.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .wrap-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .finale-hero {
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 12px 25px;
+  }
+
+  .celebration-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(251, 113, 133, 0.12);
+    border: 1px solid rgba(251, 113, 133, 0.3);
+    color: var(--rose);
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 6px 16px;
+    border-radius: 100px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  /* Cake Card */
+  .interactive-cake-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    backdrop-filter: blur(18px);
+    border-radius: 24px;
+    padding: 22px 16px;
+    text-align: center;
+    max-width: 380px;
+    width: 100%;
+    margin: 20px auto;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  }
+
+  .cake-display {
+    font-size: 3.8rem;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    margin: 8px 0;
+  }
+
+  .candle-flame {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+    animation: flameFlicker 0.6s infinite alternate;
+  }
+
+  @keyframes flameFlicker {
+    0% { transform: translateX(-50%) scale(0.9) rotate(-3deg); }
+    100% { transform: translateX(-50%) scale(1.15) rotate(3deg); }
+  }
+
+  /* Letter Card */
+  .letter-card {
+    background: linear-gradient(155deg, rgba(22, 35, 56, 0.9), rgba(15, 23, 42, 0.95));
+    border: 1px solid var(--border-gold);
+    border-radius: 24px;
+    padding: clamp(22px, 5vw, 44px);
+    margin: 28px auto;
+    position: relative;
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.45);
+  }
+
+  .letter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
+
+  .letter-to {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .letter-body p {
+    font-size: clamp(0.96rem, 3.8vw, 1.08rem);
+    line-height: 1.8;
+    color: #E2E8F0;
+    margin-bottom: 16px;
+  }
+
+  .letter-signature {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .signature-text {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color: var(--rose);
+  }
+
+  /* Careful Notes / Caring Reminders Box (Clean & Static, No randomizer) */
+  .caring-notes-box {
+    background: linear-gradient(145deg, rgba(251, 113, 133, 0.12), rgba(22, 35, 56, 0.85));
+    border: 1px solid rgba(251, 113, 133, 0.35);
+    border-radius: 22px;
+    padding: 24px 18px;
+    margin: 32px auto;
+    backdrop-filter: blur(16px);
+  }
+
+  .caring-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  .care-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(10, 15, 26, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 14px;
+  }
+
+  .care-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .care-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+
+  .care-desc {
+    font-size: 0.88rem;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+  }
+
+  /* Traits */
+  .section-title-wrap {
+    text-align: center;
+    margin: 45px 0 25px;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .traits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 35px;
+  }
+
+  @media (max-width: 480px) {
+    .traits-grid { grid-template-columns: 1fr; }
+  }
+
+  .trait-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 18px;
+    padding: 18px;
+    backdrop-filter: blur(14px);
+  }
+
+  .trait-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .trait-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: #F8FAFC; }
+  .trait-desc { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
+
+  /* Gallery of 15 Memorable Photos (Mobile 2-column) */
+  .memories-masonry {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 50px;
+  }
+
+  @media (min-width: 680px) {
+    .memories-masonry { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  }
+
+  .memory-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-glass);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .memory-card img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+  }
+
+  .memory-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 45%, rgba(10, 15, 26, 0.92) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+  }
+
+  .memory-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+
+  .memory-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #FFF;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Lightbox Modal */
+  .lightbox-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 10, 18, 0.96);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding: 16px;
+  }
+
+  .lightbox-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox-content {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 68vh;
+    border-radius: 14px;
+    border: 1.5px solid var(--border-glass);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    object-fit: contain;
+  }
+
+  .lightbox-caption-box {
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  .lightbox-caption-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--gold);
+  }
+
+  .lightbox-caption-counter {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .lightbox-nav-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-glass);
+    background: rgba(22, 35, 56, 0.85);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.4rem;
+  }
+
+  .lightbox-nav-btn.prev { left: 4px; }
+  .lightbox-nav-btn.next { right: 4px; }
+
+  .lightbox-close-btn {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #FFF;
+    font-size: 1.7rem;
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 45px 16px 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 15, 26, 0.8);
+  }
+
+  .footer-title {
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  .footer-sub {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+  }
+
+  #confettiCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Floating Audio & Celebration Controls -->
+  <div class="floating-controls">
+    <button class="control-btn" id="musicToggleBtn" title="Play Birthday Melody" onclick="toggleBirthdayMelody()">
+      🎵
+    </button>
+    <button class="control-btn" title="Celebrate with Confetti" onclick="burstMultiConfetti()">
+      🎉
+    </button>
+  </div>
+
+  <canvas id="starfield"></canvas>
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- ==============================================
+       SCREEN 1: Accept the gift 🎁
+       ============================================== -->
+  <section class="screen active" id="screen-accept">
+    <div class="kicker">✨ A Birthday Surprise for Kitt 💖 ✨</div>
+    <div class="penguin-wrap bounce">
+      <div class="party-hat"></div>
+      <div class="penguin">
+        <div class="body"></div>
+        <div class="belly"></div>
+        <div class="wing left"></div>
+        <div class="wing right"></div>
+        <div class="eye l"></div>
+        <div class="eye r"></div>
+        <div class="cheek l"></div>
+        <div class="cheek r"></div>
+        <div class="beak"></div>
+        <div class="feet"><span></span><span></span></div>
+      </div>
+    </div>
+    
+    <h1 class="title-hero">Hey <span class="gradient-text">Kitt ❤️</span><br>Accept Your <em>Gift</em> 🎁</h1>
+    <p class="subtitle">Your best friend made a heartfelt birthday surprise just for you. Ready to unwrap it?</p>
+    
+    <div class="btn-row">
+      <button class="btn" onclick="acceptGift()">YES, OPEN IT! 💖</button>
+      <button class="btn ghost" id="noBtn" onmouseover="dodgeNo()" onclick="rejectGift()">NO 🙈</button>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SCREEN 1b: The playful "NO" trick screen
+       ============================================== -->
+  <section class="screen" id="screen-no">
+    <div class="penguin-wrap">
+      <div class="penguin sad">
+        <div class="body"></div>
+        <div class="belly"></div>
+        <div class="wing left"></div>
+        <div class="wing right"></div>
+        <div class="eye l"></div>
+        <div class="eye r"></div>
+        <div class="tear l"></div>
+        <div class="tear r"></div>
+        <div class="beak"></div>
+        <div class="feet"><span></span><span></span></div>
+      </div>
+    </div>
+    
+    <h1 class="title-hero">Wait... Kitt, You Clicked <span style="color:var(--rose);">NO?!</span> 🥺</h1>
+    <p class="subtitle">My little penguin heart just shattered! Best friends aren't supposed to click NO... Let's pretend that was just a thumb slip! 😉</p>
+    
+    <div class="btn-row">
+      <button class="btn" onclick="goTo('screen-accept')">LET ME FIX THAT & SAY YES! ✨</button>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SCREEN 2: Choose your Penguin messenger 🐧
+       ============================================== -->
+  <section class="screen" id="screen-choose">
+    <div class="kicker">Pick A Penguin</div>
+    <h1 class="title-hero">Choose For <span class="gradient-text">Kitt 💖</span></h1>
+    <p class="subtitle">Each cute messenger carries a piece of our friendship story. Tap one to start!</p>
+    
+    <div class="penguin-choices">
+      <!-- Penguin 1 -->
+      <div class="choice-card" onclick="openPenguin('p1')">
+        <div class="penguin-mini">
+          <div class="penguin bounce">
+            <div class="body"></div><div class="belly"></div>
+            <div class="wing left"></div><div class="wing right"></div>
+            <div class="eye l"></div><div class="eye r"></div>
+            <div class="cheek l"></div><div class="cheek r"></div>
+            <div class="beak"></div><div class="feet"><span></span><span></span></div>
+          </div>
+        </div>
+        <div style="font-size:1.6rem;">👑</div>
+        <div class="choice-tag">Birthday Queen</div>
+        <div class="choice-sub">Special wish</div>
+      </div>
+
+      <!-- Penguin 2 -->
+      <div class="choice-card" onclick="openPenguin('p2')">
+        <div class="penguin-mini">
+          <div class="penguin bounce">
+            <div class="body"></div><div class="belly"></div>
+            <div class="wing left"></div><div class="wing right"></div>
+            <div class="eye l"></div><div class="eye r"></div>
+            <div class="cheek l"></div><div class="cheek r"></div>
+            <div class="beak"></div><div class="feet"><span></span><span></span></div>
+          </div>
+        </div>
+        <div style="font-size:1.6rem;">📸</div>
+        <div class="choice-tag">Bestie Vault</div>
+        <div class="choice-sub">Memories</div>
+      </div>
+
+      <!-- Penguin 3 -->
+      <div class="choice-card" onclick="openPenguin('p3')">
+        <div class="penguin-mini">
+          <div class="penguin bounce">
+            <div class="body"></div><div class="belly"></div>
+            <div class="wing left"></div><div class="wing right"></div>
+            <div class="eye l"></div><div class="eye r"></div>
+            <div class="cheek l"></div><div class="cheek r"></div>
+            <div class="beak"></div><div class="feet"><span></span><span></span></div>
+          </div>
+        </div>
+        <div style="font-size:1.6rem;">🫂</div>
+        <div class="choice-tag">Virtual Hug</div>
+        <div class="choice-sub">Forever Bond</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 15px;">
+      <button class="btn ghost small" onclick="revealFinaleDirect()">Skip straight to the Grand Celebration 🎉</button>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SCREEN 3: Penguin 1 (Birthday Wish + Polaroid)
+       ============================================== -->
+  <section class="screen" id="screen-p1">
+    <div class="card-modal">
+      <div style="font-size: 2.4rem; margin-bottom: 6px;">🎂</div>
+      <div class="kicker">Penguin 1 Whispers</div>
+      <h2 style="font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: 6px;">Happy Birthday, <span class="gradient-text">Kitt 💖</span></h2>
+      <p style="color:var(--muted); font-size: 0.9rem;">You are the prettiest, sweetest, and most genuine soul.</p>
+      
+      <div class="polaroid-frame" onclick="openLightboxBySrc('images/1790065762317.png', 'The Brightest Smile ✨')">
+        <img src="images/1790065762317.png" alt="Kitt portrait">
+        <div class="polaroid-caption">Kitt • Our Ray of Sunshine ☀️</div>
+      </div>
+
+      <p style="color: #E2E8F0; line-height: 1.6; margin-bottom: 20px; font-size: 0.92rem;">
+        "May your year be as radiant as your smile, as inspiring as your dreams, and as endlessly beautiful as you are inside and out."
+      </p>
+
+      <div class="btn-row">
+        <button class="btn ghost small" onclick="goTo('screen-choose')">← Back</button>
+        <button class="btn small" onclick="revealFinale()">See More Surprises 🎉</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SCREEN 4: Penguin 2 (Bestie Collage)
+       ============================================== -->
+  <section class="screen" id="screen-p2">
+    <div class="card-modal">
+      <div class="kicker">Penguin 2 Shares</div>
+      <h2 style="font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: 6px;">Sweet & <span class="gradient-text">Unforgettable</span></h2>
+      <p style="color:var(--muted); font-size: 0.9rem; margin-bottom: 12px;">Every picture holds a memory I will treasure forever.</p>
+
+      <div class="mini-collage">
+        <div class="mini-collage-item" onclick="openLightboxBySrc('images/1790065932553.png', 'Grace & Elegance 🌸')">
+          <img src="images/1790065932553.png" alt="Memory 1">
+        </div>
+        <div class="mini-collage-item" onclick="openLightboxBySrc('images/1790079771824.png', 'Radiant Soul 🌟')">
+          <img src="images/1790079771824.png" alt="Memory 2">
+        </div>
+        <div class="mini-collage-item" onclick="openLightboxBySrc('images/1790079920005.png', 'Sweet Laughter 💕')">
+          <img src="images/1790079920005.png" alt="Memory 3">
+        </div>
+        <div class="mini-collage-item" onclick="openLightboxBySrc('images/1790080151345.png', 'Golden Hour Queen ✨')">
+          <img src="images/1790080151345.png" alt="Memory 4">
+        </div>
+        <div class="mini-collage-item" onclick="openLightboxBySrc('images/1790080386553.png', 'Unfiltered Joy 🥰')">
+          <img src="images/1790080386553.png" alt="Memory 5">
+        </div>
+        <div class="mini-collage-item" onclick="openLightboxBySrc('images/1790065350528.png', 'Cutest Smile 🌷')">
+          <img src="images/1790065350528.png" alt="Memory 6">
+        </div>
+      </div>
+
+      <p style="color: #E2E8F0; line-height: 1.55; font-size: 0.92rem; margin-bottom: 20px;">
+        Thank you for being my constant, my cheerleader, and the sister of my soul. Here’s to a million more laughs together, Kitt!
+      </p>
+
+      <div class="btn-row">
+        <button class="btn ghost small" onclick="goTo('screen-choose')">← Back</button>
+        <button class="btn small" onclick="revealFinale()">Grand Celebration 🎉</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SCREEN 5: Penguin 3 (Virtual Hug & BFF Tribute)
+       ============================================== -->
+  <section class="screen" id="screen-p3">
+    <div class="card-modal">
+      <div style="font-size: 3.8rem; margin: 8px 0 14px;">🫂</div>
+      <div class="kicker">From My Heart To Yours</div>
+      <h2 style="font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: 8px;">The Biggest <span class="gradient-text">Virtual Hug</span></h2>
+      <p style="color: #E2E8F0; font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px;">
+        Even miles apart or by your side, you are irreplaceable to me Kitt. Best friends by chance, sisters by choice.
+      </p>
+
+      <div style="font-family:'Playfair Display',serif; font-style:italic; font-size: 1.6rem; color: var(--gold); margin-bottom: 22px;">
+        Best Friend Forever & Ever ♾️
+      </div>
+
+      <div class="btn-row">
+        <button class="btn ghost small" onclick="goTo('screen-choose')">← Back</button>
+        <button class="btn small" onclick="revealFinale()">Explore All Memories 💫</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SCREEN 6: THE GRAND FINALE (Full Celebration Hub)
+       ============================================== -->
+  <section id="screen-finale">
+    <div class="wrap-container">
+      
+      <!-- Finale Hero Section -->
+      <div class="finale-hero">
+        <div class="celebration-badge">✨ 24 Karat Birthday Girl ✨</div>
+        <h1 class="title-hero" style="font-size: clamp(2.2rem, 7vw, 3.6rem); margin-bottom: 14px;">
+          Happy Birthday,<br><span class="gradient-text">Kitt 💖</span> 🎂✨
+        </h1>
+        <p class="subtitle">
+          Today the world celebrates the day an extraordinary human being was born. Here is everything your best friend wants you to know.
+        </p>
+
+        <!-- Interactive Blow The Candles Widget -->
+        <div class="interactive-cake-box">
+          <p style="font-size: 0.8rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px;">
+            🎂 Make A Secret Wish & Blow The Candle!
+          </p>
+          <div class="cake-display" id="interactiveCake" onclick="blowCandle()">
+            🎂
+            <span class="candle-flame" id="candleFlame">🕯️</span>
+          </div>
+          <p id="candleWishText" style="font-size: 0.9rem; color: var(--ink-secondary); margin-top: 8px;">
+            Tap the cake to blow the candle and lock in your wish! ✨
+          </p>
+        </div>
+      </div>
+
+      <!-- Letter to Best Friend Forever -->
+      <div class="letter-card">
+        <div class="letter-header">
+          <div>
+            <div style="font-size: 0.76rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;">To My Forever Person</div>
+            <div class="letter-to">Dearest Kitt 💖,</div>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--muted);">Celebrating You Today & Every Day ✨</div>
+        </div>
+
+        <div class="letter-body">
+          <p>
+            Happy, happy birthday to the one person who has seen me at my highest, my lowest, and loved me fiercely through it all. Having you as my <strong style="color:var(--gold);">Best Friend Forever</strong> is one of the greatest blessings life has ever gifted me.
+          </p>
+          <p>
+            You are genuine in a world full of pretend. You have this rare gift of walking into a room and instantly making everyone feel cheered, seen, and warm. Your laughter is contagious, your empathy is boundless, and your loyalty never wavers. Whenever life gets chaotic, knowing I have you in my corner makes everything okay.
+          </p>
+          <p>
+            Thank you for every late-night conversation, every tear we've wiped away, every uncontrollable burst of laughter over our silly jokes, and for always believing in me even when I struggled to believe in myself.
+          </p>
+          <p>
+            On this birthday, my wish for you is boundless: May your heart always be at peace, may your dreams unfold before your eyes, may good health and abundance surround you, and may you never forget just how deeply you are cherished.
+          </p>
+        </div>
+
+        <div class="letter-signature">
+          <div>
+            <div style="font-size:0.8rem; color:var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">With All My Love & Friendship,</div>
+            <div class="signature-text">Your Best Friend Forever 💖</div>
+          </div>
+          <div style="font-size: 1.8rem;">🥂✨</div>
+        </div>
+      </div>
+
+      <!-- Always Take Care, Kitt (Careful Reminders) -->
+      <div class="caring-notes-box">
+        <div class="kicker" style="margin-bottom: 8px;">From Your Bestie's Heart</div>
+        <h3 style="font-size: clamp(1.4rem, 4vw, 1.8rem); color: #FFF; font-weight: 700;">Always Take Care, <span class="gradient-text">Kitt 💖</span></h3>
+        <p style="font-size: 0.88rem; color: var(--muted); margin-top: 4px;">Gentle reminders because your happiness and health mean the absolute world to me.</p>
+
+        <div class="caring-list">
+          <div class="care-item">
+            <div class="care-icon">🍲</div>
+            <div>
+              <div class="care-title">Eat Well & Never Skip Meals</div>
+              <div class="care-desc">No matter how busy your day gets, eat proper food on time. Taking care of your health is rule number one!</div>
+            </div>
+          </div>
+
+          <div class="care-item">
+            <div class="care-icon">🌙</div>
+            <div>
+              <div class="care-title">Rest & Get Enough Sleep</div>
+              <div class="care-desc">Don't stay up needlessly stressing or overthinking. Give your mind and body the peaceful rest you deserve.</div>
+            </div>
+          </div>
+
+          <div class="care-item">
+            <div class="care-icon">🌿</div>
+            <div>
+              <div class="care-title">Don't Carry Heavy Thoughts Alone</div>
+              <div class="care-desc">Whenever something bothers you, remember you never have to face it by yourself. I am always just one call away.</div>
+            </div>
+          </div>
+
+          <div class="care-item">
+            <div class="care-icon">✨</div>
+            <div>
+              <div class="care-title">Protect Your Beautiful Smile</div>
+              <div class="care-desc">Your smile has the power to brighten anybody's day. Never let anyone or anything take that glow away from you.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Kitt Is The Best Friend In The World (Traits Grid) -->
+      <div class="section-title-wrap">
+        <div class="kicker">Why You Are Irreplaceable</div>
+        <h2 class="section-title">What Makes Kitt So <span class="gradient-text">Special</span> 💎</h2>
+        <p style="color:var(--muted); font-size: 0.9rem; max-width: 440px; margin: 0 auto;">Four reasons why having you as a best friend is a once-in-a-lifetime blessing.</p>
+      </div>
+
+      <div class="traits-grid">
+        <div class="trait-card">
+          <div class="trait-icon">🌟</div>
+          <div class="trait-title">Pure Heart of Gold</div>
+          <div class="trait-desc">You carry kindness that is rare and authentic. You love with your whole heart and make everyone around you feel valued.</div>
+        </div>
+
+        <div class="trait-card">
+          <div class="trait-icon">🛡️</div>
+          <div class="trait-title">My 24/7 Safe Haven</div>
+          <div class="trait-desc">With you, there's never any judgment. You listen to my rambling, understand my silence, and always give the warmest comfort.</div>
+        </div>
+
+        <div class="trait-card">
+          <div class="trait-icon">😂</div>
+          <div class="trait-title">Partner in Crime</div>
+          <div class="trait-desc">Nobody gets our crazy humor like you do! From random goofy faces to unstoppable laughing fits, you make every second memorable.</div>
+        </div>
+
+        <div class="trait-card">
+          <div class="trait-icon">♾️</div>
+          <div class="trait-title">Unbreakable Bond</div>
+          <div class="trait-desc">Time, distance, or whatever life throws our way — our friendship only grows deeper. We are best friends for life, Kitt!</div>
+        </div>
+      </div>
+
+      <!-- Full Gallery of 15 Memorable Photos -->
+      <div class="section-title-wrap">
+        <div class="kicker">Through The Lens</div>
+        <h2 class="section-title">Memorable Photos Of <span class="gradient-text">Kitt 💖</span> 📸</h2>
+        <p style="color:var(--muted); font-size: 0.9rem; max-width: 440px; margin: 0 auto;">Tap any picture to view it in full screen!</p>
+      </div>
+
+      <!-- 15 Photo Cards loaded from images folder -->
+      <div class="memories-masonry" id="galleryContainer">
+        <!-- 1 -->
+        <div class="memory-card" onclick="openLightboxByIndex(0)">
+          <img src="images/1790065762317.png" loading="lazy" alt="Kitt memory 1">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 01</span>
+            <span class="memory-title">The Brightest Smile ✨</span>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="memory-card" onclick="openLightboxByIndex(1)">
+          <img src="images/1790065932553.png" loading="lazy" alt="Kitt memory 2">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 02</span>
+            <span class="memory-title">Pure Elegance & Grace 🌸</span>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="memory-card" onclick="openLightboxByIndex(2)">
+          <img src="images/1790079771824.png" loading="lazy" alt="Kitt memory 3">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 03</span>
+            <span class="memory-title">Radiant Energy 🌟</span>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="memory-card" onclick="openLightboxByIndex(3)">
+          <img src="images/1790079920005.png" loading="lazy" alt="Kitt memory 4">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 04</span>
+            <span class="memory-title">Sweet Laughter 💕</span>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="memory-card" onclick="openLightboxByIndex(4)">
+          <img src="images/1790080151345.png" loading="lazy" alt="Kitt memory 5">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 05</span>
+            <span class="memory-title">Unfiltered Joy 🥰</span>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="memory-card" onclick="openLightboxByIndex(5)">
+          <img src="images/1790080386553.png" loading="lazy" alt="Kitt memory 6">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 06</span>
+            <span class="memory-title">Golden Soul 💫</span>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="memory-card" onclick="openLightboxByIndex(6)">
+          <img src="images/1790065350528.png" loading="lazy" alt="Kitt memory 7">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 07</span>
+            <span class="memory-title">Cutest Smile 🌷</span>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="memory-card" onclick="openLightboxByIndex(7)">
+          <img src="images/1790079800285.png" loading="lazy" alt="Kitt memory 8">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 08</span>
+            <span class="memory-title">Timeless Snapshot 📷</span>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="memory-card" onclick="openLightboxByIndex(8)">
+          <img src="images/1790080331142.png" loading="lazy" alt="Kitt memory 9">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 09</span>
+            <span class="memory-title">Cherished Memory 💖</span>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="memory-card" onclick="openLightboxByIndex(9)">
+          <img src="images/1790088542673.png" loading="lazy" alt="Kitt memory 10">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 10</span>
+            <span class="memory-title">Precious Bestie 🎀</span>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="memory-card" onclick="openLightboxByIndex(10)">
+          <img src="images/1790088668363.png" loading="lazy" alt="Kitt memory 11">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 11</span>
+            <span class="memory-title">Sunshine Girl ☀️</span>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="memory-card" onclick="openLightboxByIndex(11)">
+          <img src="images/1790088775173.png" loading="lazy" alt="Kitt memory 12">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 12</span>
+            <span class="memory-title">Always Charming 👑</span>
+          </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="memory-card" onclick="openLightboxByIndex(12)">
+          <img src="images/1790089192453.png" loading="lazy" alt="Kitt memory 13">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 13</span>
+            <span class="memory-title">Warmest Heart 💐</span>
+          </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="memory-card" onclick="openLightboxByIndex(13)">
+          <img src="images/1790089257276.png" loading="lazy" alt="Kitt memory 14">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 14</span>
+            <span class="memory-title">Forever My Favorite 🤍</span>
+          </div>
+        </div>
+
+        <!-- 15 -->
+        <div class="memory-card" onclick="openLightboxByIndex(14)">
+          <img src="images/IMG_20250926_131549_745.jpg.jpeg" loading="lazy" alt="Kitt memory 15">
+          <div class="memory-overlay">
+            <span class="memory-tag">Moment 15</span>
+            <span class="memory-title">Best Friend Forever ♾️</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+      <div class="lightbox-content" onclick="event.stopPropagation()">
+        <button class="lightbox-close-btn" onclick="closeLightbox(event)">✕</button>
+        <button class="lightbox-nav-btn prev" onclick="navigateLightbox(-1)">‹</button>
+        <button class="lightbox-nav-btn next" onclick="navigateLightbox(1)">›</button>
+        
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Zoomed memory">
+        <div class="lightbox-caption-box">
+          <div class="lightbox-caption-title" id="lightboxTitle">Memories</div>
+          <div class="lightbox-caption-counter" id="lightboxCounter">Photo 1 of 15</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-title gradient-text">Happy Birthday Kitt 💖</div>
+      <p class="footer-sub">Handcrafted with boundless love & care for the best friend forever.</p>
+      <div class="btn-row" style="margin: 0 auto;">
+        <button class="btn small" onclick="burstMultiConfetti()">Confetti Blast! 🎉</button>
+        <button class="btn ghost small" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top ⬆️</button>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ==============================================
+       SCRIPTS: Animations, Confetti, Audio Synthesizer
+       ============================================== -->
+  <script>
+    const galleryItems = [
+      { src: "images/1790065762317.png", title: "The Brightest Smile ✨" },
+      { src: "images/1790065932553.png", title: "Pure Elegance & Grace 🌸" },
+      { src: "images/1790079771824.png", title: "Radiant Energy 🌟" },
+      { src: "images/1790079920005.png", title: "Sweet Laughter 💕" },
+      { src: "images/1790080151345.png", title: "Unfiltered Joy 🥰" },
+      { src: "images/1790080386553.png", title: "Golden Soul 💫" },
+      { src: "images/1790065350528.png", title: "Cutest Smile 🌷" },
+      { src: "images/1790079800285.png", title: "Timeless Snapshot 📷" },
+      { src: "images/1790080331142.png", title: "Cherished Memory 💖" },
+      { src: "images/1790088542673.png", title: "Precious Bestie 🎀" },
+      { src: "images/1790088668363.png", title: "Sunshine Girl ☀️" },
+      { src: "images/1790088775173.png", title: "Always Charming 👑" },
+      { src: "images/1790089192453.png", title: "Warmest Heart 💐" },
+      { src: "images/1790089257276.png", title: "Forever My Favorite 🤍" },
+      { src: "images/IMG_20250926_131549_745.jpg.jpeg", title: "Best Friend Forever ♾️" }
+    ];
+
+    let currentLightboxIndex = 0;
+
+    function goTo(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(screenId);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function acceptGift() {
+      playChime();
+      burstMultiConfetti();
+      goTo('screen-choose');
+    }
+
+    function rejectGift() {
+      playSoftBoop();
+      goTo('screen-no');
+    }
+
+    function dodgeNo() {
+      const btn = document.getElementById('noBtn');
+      if (!btn) return;
+      const x = (Math.random() - 0.5) * 80;
+      const y = (Math.random() - 0.5) * 50;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function openPenguin(type) {
+      playChime();
+      goTo('screen-' + type);
+    }
+
+    function revealFinaleDirect() {
+      revealFinale();
+    }
+
+    function revealFinale() {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const finale = document.getElementById('screen-finale');
+      finale.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        burstMultiConfetti();
+        startBirthdayMelody();
+      }, 300);
+    }
+
+    function openLightboxByIndex(index) {
+      currentLightboxIndex = index;
+      updateLightboxContent();
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+
+    function openLightboxBySrc(src, title) {
+      const idx = galleryItems.findIndex(i => i.src === src);
+      if (idx !== -1) {
+        openLightboxByIndex(idx);
+      } else {
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxTitle').innerText = title || 'Memory';
+        document.getElementById('lightboxCounter').innerText = 'Best Friend Memory ✨';
+        document.getElementById('lightboxModal').classList.add('active');
+      }
+    }
+
+    function updateLightboxContent() {
+      const item = galleryItems[currentLightboxIndex];
+      document.getElementById('lightboxImg').src = item.src;
+      document.getElementById('lightboxTitle').innerText = item.title;
+      document.getElementById('lightboxCounter').innerText = `Photo ${currentLightboxIndex + 1} of ${galleryItems.length}`;
+    }
+
+    function navigateLightbox(direction) {
+      currentLightboxIndex = (currentLightboxIndex + direction + galleryItems.length) % galleryItems.length;
+      updateLightboxContent();
+    }
+
+    function closeLightbox(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('lightboxModal');
+      if (modal && modal.classList.contains('active')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navigateLightbox(-1);
+        if (e.key === 'ArrowRight') navigateLightbox(1);
+      }
+    });
+
+    let candleBlown = false;
+    function blowCandle() {
+      if (candleBlown) return;
+      candleBlown = true;
+      const flame = document.getElementById('candleFlame');
+      const text = document.getElementById('candleWishText');
+      flame.style.animation = 'none';
+      flame.style.opacity = '0';
+      flame.style.transform = 'translateY(-20px) scale(0)';
+      flame.style.transition = 'all 0.5s ease';
+      text.innerHTML = '<strong style="color:var(--gold);">✨ WISH GRANTED! ✨</strong><br>May every single wish in your heart blossom this year, Kitt 💖!';
+      burstMultiConfetti();
+      playChime();
+    }
+
+    // Web Audio Synthesizer
+    let audioCtx = null;
+    let isMelodyPlaying = false;
+    let melodyTimeout = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playTone(freq, duration, type = 'sine', gainVal = 0.15) {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(gainVal, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (err) {}
+    }
+
+    function playChime() {
+      playTone(523.25, 0.4, 'sine', 0.12);
+      setTimeout(() => playTone(659.25, 0.4, 'sine', 0.12), 80);
+      setTimeout(() => playTone(783.99, 0.6, 'sine', 0.15), 160);
+    }
+
+    function playSoftBoop() {
+      playTone(330, 0.25, 'triangle', 0.1);
+      setTimeout(() => playTone(260, 0.35, 'sine', 0.1), 120);
+    }
+
+    const hbdNotes = [
+      { f: 261.63, d: 0.35 }, { f: 261.63, d: 0.25 }, { f: 293.66, d: 0.55 }, { f: 261.63, d: 0.55 }, { f: 349.23, d: 0.55 }, { f: 329.63, d: 0.95 },
+      { f: 261.63, d: 0.35 }, { f: 261.63, d: 0.25 }, { f: 293.66, d: 0.55 }, { f: 261.63, d: 0.55 }, { f: 392.00, d: 0.55 }, { f: 349.23, d: 0.95 },
+      { f: 261.63, d: 0.35 }, { f: 261.63, d: 0.25 }, { f: 523.25, d: 0.55 }, { f: 440.00, d: 0.55 }, { f: 349.23, d: 0.55 }, { f: 329.63, d: 0.55 }, { f: 293.66, d: 0.75 },
+      { f: 466.16, d: 0.35 }, { f: 466.16, d: 0.25 }, { f: 440.00, d: 0.55 }, { f: 349.23, d: 0.55 }, { f: 392.00, d: 0.55 }, { f: 349.23, d: 1.1 }
+    ];
+
+    function toggleBirthdayMelody() {
+      if (isMelodyPlaying) {
+        stopBirthdayMelody();
+      } else {
+        startBirthdayMelody();
+      }
+    }
+
+    function startBirthdayMelody() {
+      if (isMelodyPlaying) return;
+      isMelodyPlaying = true;
+      const btn = document.getElementById('musicToggleBtn');
+      if (btn) btn.classList.add('playing');
+
+      let currentNote = 0;
+      function playNext() {
+        if (!isMelodyPlaying) return;
+        if (currentNote >= hbdNotes.length) {
+          currentNote = 0;
+          melodyTimeout = setTimeout(playNext, 1800);
+          return;
+        }
+        const note = hbdNotes[currentNote++];
+        playTone(note.f * 1.5, note.d * 1.1, 'sine', 0.16);
+        playTone(note.f * 3, note.d * 0.8, 'sine', 0.05);
+        melodyTimeout = setTimeout(playNext, note.d * 900);
+      }
+      playNext();
+    }
+
+    function stopBirthdayMelody() {
+      isMelodyPlaying = false;
+      if (melodyTimeout) clearTimeout(melodyTimeout);
+      const btn = document.getElementById('musicToggleBtn');
+      if (btn) btn.classList.remove('playing');
+    }
+
+    // Confetti System
+    const confettiCanvas = document.getElementById('confettiCanvas');
+    const cCtx = confettiCanvas.getContext('2d');
+    let confettiParticles = [];
+    let confettiAnimId = null;
+
+    function resizeConfetti() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeConfetti);
+    resizeConfetti();
+
+    const confettiPalette = ['#FCD34D', '#FB7185', '#38BDF8', '#A855F7', '#34D399', '#FFF'];
+
+    function burstMultiConfetti() {
+      for (let i = 0; i < 90; i++) {
+        confettiParticles.push({
+          x: confettiCanvas.width * (0.3 + Math.random() * 0.4),
+          y: confettiCanvas.height * (0.2 + Math.random() * 0.2),
+          vx: (Math.random() - 0.5) * 14,
+          vy: (Math.random() - 1.2) * 14,
+          size: Math.random() * 6 + 3,
+          color: confettiPalette[Math.floor(Math.random() * confettiPalette.length)],
+          rotation: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 10,
+          gravity: 0.35,
+          life: 0,
+          maxLife: 140 + Math.random() * 40
+        });
+      }
+      if (!confettiAnimId) renderConfetti();
+    }
+
+    function renderConfetti() {
+      cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      let active = false;
+
+      confettiParticles.forEach(p => {
+        p.vy += p.gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.rotSpeed;
+        p.life++;
+
+        if (p.life < p.maxLife && p.y < confettiCanvas.height + 40) {
+          active = true;
+          cCtx.save();
+          cCtx.translate(p.x, p.y);
+          cCtx.rotate(p.rotation * Math.PI / 180);
+          cCtx.fillStyle = p.color;
+          cCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          cCtx.restore();
+        }
+      });
+
+      confettiParticles = confettiParticles.filter(p => p.life < p.maxLife && p.y < confettiCanvas.height + 40);
+
+      if (active) {
+        confettiAnimId = requestAnimationFrame(renderConfetti);
+      } else {
+        cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        confettiAnimId = null;
+      }
+    }
+
+    // Starfield Background
+    const starfield = document.getElementById('starfield');
+    const sCtx = starfield.getContext('2d');
+    let stars = [];
+
+    function initStars() {
+      starfield.width = window.innerWidth;
+      starfield.height = window.innerHeight;
+      stars = [];
+      const starCount = Math.floor((starfield.width * starfield.height) / 7500);
+      for (let i = 0; i < starCount; i++) {
+        stars.push({
+          x: Math.random() * starfield.width,
+          y: Math.random() * starfield.height,
+          radius: Math.random() * 1.3 + 0.3,
+          alpha: Math.random() * 0.8 + 0.2,
+          speed: Math.random() * 0.02 + 0.005
+        });
+      }
+    }
+
+    function drawStars() {
+      sCtx.clearRect(0, 0, starfield.width, starfield.height);
+      stars.forEach(s => {
+        s.alpha += Math.sin(Date.now() * s.speed) * 0.01;
+        sCtx.beginPath();
+        sCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        sCtx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.1, Math.min(1, s.alpha))})`;
+        sCtx.fill();
+      });
+      requestAnimationFrame(drawStars);
+    }
+
+    window.addEventListener('resize', initStars);
+    initStars();
+    drawStars();
+  </script>
+</body>
+</html>
